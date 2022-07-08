@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { findByTypeAndEmployeeId } from '../repositories/cardRepository.js';
-import { findByApiKey } from '../repositories/companyRepository.js';
-import { findById } from '../repositories/employeeRepository.js';
-import cardSchemas from '../schemas/cardSchemas.js';
+import { findByTypeAndEmployeeId } from '../../repositories/cardRepository.js';
+import { findByApiKey } from '../../repositories/companyRepository.js';
+import { findById } from '../../repositories/employeeRepository.js';
+import cardSchemas from '../../schemas/cardSchemas.js';
 
 export async function companyValidate(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;

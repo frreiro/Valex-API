@@ -4,7 +4,7 @@ import Cryptr from "cryptr";
 const cryptr = new Cryptr(process.env.ENCRYPT_KEY);
 
 
-import { findById } from "../repositories/employeeRepository.js";
+import { findById } from "../../repositories/employeeRepository.js";
 
 async function generateCreditCard(employeeId: number) {
     const number = generateCreditCardNumber();

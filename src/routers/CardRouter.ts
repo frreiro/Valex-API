@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { createCard } from "../controllers/cardControllers.js";
-import { checkEmployeeCards, companyEmployeeValidate, companyValidate, createCardValidate } from "../middlewares/cardMiddleware.js";
+import { createCard } from "../controllers/cardControllers/createCardControllers.js";
+import { checkEmployeeCards, companyEmployeeValidate, companyValidate, createCardValidate } from "../middlewares/cardMiddlewares/createCardMiddleware.js";
 
 const cardRouter = Router();
 

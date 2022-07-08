@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import cardServices from '../services/cardServices.js';
+import cardServices from '../../services/cardServices/createCardServices.js';
 
 //TODO: Validar header => x-api-key
 //Para criar um cartão a empresa precisa:
@@ -11,7 +11,7 @@ import cardServices from '../services/cardServices.js';
 // [x] Criar nome do cartão -> Services
 // [x] Criar data de expiração do cartão -> Services
 // [x] Criar código CVC do cartão -> Services
-
+// [] Montar o objeto COMPLETO para salvar no banco
 
 
 export async function createCard(req: Request, res: Response) {
