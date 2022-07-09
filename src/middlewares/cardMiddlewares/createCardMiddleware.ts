@@ -31,7 +31,7 @@ export async function companyEmployeeValidate(req: Request, res: Response, next:
 export async function checkEmployeeCards(req: Request, res: Response, next: NextFunction) {
     const { cardType, employeeId } = req.body;
 
-    const employeeCards = findByTypeAndEmployeeId(cardType, employeeId);
+    const employeeCards = await findByTypeAndEmployeeId(cardType, employeeId);
     if (employeeCards) return res.sendStatus(409);
     next();
 }

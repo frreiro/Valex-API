@@ -1,12 +1,11 @@
 import { faker } from "@faker-js/faker"
 import dayjs from "dayjs"
-import Cryptr from "cryptr";
-const cryptr = new Cryptr(process.env.ENCRYPT_KEY);
-
+import cryptr from "../../utils/cryptr.js";
 
 import { findById } from "../../repositories/employeeRepository.js";
+import { insert } from "../../repositories/cardRepository.js";
 
-async function generateCreditCard(employeeId: number) {
+async function generateCreditCard(employeeId: number, type: 'groceries' | 'restaurant' | 'transport' | 'education' | 'health') {
     const number = generateCreditCardNumber();
     const cardholderName = await generateCreditCardHolderName(employeeId);
     const expirationDate = generateExpirationDate();
@@ -18,9 +17,14 @@ async function generateCreditCard(employeeId: number) {
         cardholderName,
         securityCode,
         expirationDate,
+        password: null,
         isVirtual: false,
+        originalCardId: null,
+        isBlocked: false,
+        type,
     };
-    console.log(card)
+
+    await insert(card)
     return card;
 }
 
