@@ -1,18 +1,13 @@
 import { Router } from "express";
 import { activateCard, cardBlock, cardStatements, cardUnblock, createCard } from "../controllers/cardControllers/cardControllers.js";
-import { cardIdValidate, experationDateValidate, passwordValidate } from "../middlewares/cardMiddlewares/activateCardMiddleware.js";
-import { checkEmployeeCards, companyEmployeeValidate, companyValidate, createCardValidate } from "../middlewares/cardMiddlewares/createCardMiddleware.js";
+import { cardIdValidate } from "../middlewares/cardMiddlewares/activateCardMiddleware.js";
+import { createCardValidate, tokenValidate } from "../middlewares/cardMiddlewares/createCardMiddleware.js";
 
 const cardRouter = Router();
 
-cardRouter.post("/card/create",
-    createCardValidate,
-    companyValidate,
-    companyEmployeeValidate,
-    checkEmployeeCards,
-    createCard);
+cardRouter.post("/card/create", createCardValidate, tokenValidate, createCard);
 
-cardRouter.post("/card/activate", cardIdValidate, experationDateValidate, passwordValidate, activateCard);
+cardRouter.post("/card/activate", cardIdValidate, activateCard);
 
 //TODO: alterar para params quando aprender interface e endpoint para get
 cardRouter.post("/card/statements", cardIdValidate, cardStatements)
