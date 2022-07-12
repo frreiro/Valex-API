@@ -6,6 +6,7 @@ import { findById } from '../repositories/cardRepository.js';
 export async function tokenValidate(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
     const key = authorization.split("Bearer").at(1).trim();
+    if (!key) return res.sendStatus(401)
     const company = await findByApiKey(key);
     if (!company) return res.sendStatus(401);
     res.locals.companyId = company.id;
