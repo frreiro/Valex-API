@@ -6,8 +6,8 @@ import { insert } from "../../repositories/cardRepository.js";
 import cardServices from "./cardServices.js";
 
 async function generateCreditCard(data: any) {
-    checkValidates(data);
-    const { employeeId, type } = data
+    await checkValidates(data);
+    const { employeeId, cardType: type } = data
     const number = generateCreditCardNumber();
     const cardholderName = await generateCreditCardHolderName(employeeId);
     const expirationDate = generateExpirationDate();
