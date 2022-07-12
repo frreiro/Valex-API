@@ -9,6 +9,14 @@ async function getCardStatements(cardId: number) {
     return { balance, transactions: payments, recharges }
 }
 
+async function getBalanceByCardId(cardId: number) {
+    const recharges = await findRechargesByCardId(cardId);
+    const payments = await findPaymentByCardId(cardId);
+    const totalRecharges: number = getTotalAmount(recharges);
+    const totalPayments: number = getTotalAmount(payments);
+    return (totalRecharges - totalPayments);
+}
+
 function getBalance(transactios: any) {
     const { recharges, payments } = transactios;
     const totalRecharges: number = getTotalAmount(recharges);
@@ -19,4 +27,4 @@ function getBalance(transactios: any) {
 function getTotalAmount(objectArray: Array<Object>): number {
     return objectArray.reduce((sum: number, object: any) => sum + object.amount, 0);
 }
-export default { getCardStatements }
+export default { getCardStatements, getBalanceByCardId }

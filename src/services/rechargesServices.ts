@@ -6,7 +6,7 @@ import cardServices from "./cardServices/cardServices.js";
 async function recharge(card: any, amount: number) {
     const { id: cardId, expirationDate, password }: { id: number, expirationDate: string, password: string } = card
     cardServices.expirationDateValidate(expirationDate);
-    cardServices.cardIsActivated(password)
+    cardServices.cardIsActivated(password);
     await insert({ cardId, amount });
 }
 

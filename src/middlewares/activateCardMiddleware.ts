@@ -3,7 +3,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat.js"
 import dayjs from "dayjs"
 dayjs.extend(customParseFormat)
 
-import { findById } from '../../repositories/cardRepository.js';
+import { findById } from '../repositories/cardRepository.js';
 
 export async function cardIdValidate(req: Request, res: Response, next: NextFunction) {
     const { cardId }: { cardId: number } = req.body;

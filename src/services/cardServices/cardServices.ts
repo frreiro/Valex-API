@@ -1,9 +1,11 @@
 import bcrypt from 'bcrypt';
 import dayjs from "dayjs"
 import customParseFormat from "dayjs/plugin/customParseFormat.js"
-import { findByTypeAndEmployeeId } from '../../repositories/cardRepository';
-import { findById } from '../../repositories/employeeRepository';
+import { findByTypeAndEmployeeId } from '../../repositories/cardRepository.js';
+import { findById } from '../../repositories/employeeRepository.js';
 dayjs.extend(customParseFormat)
+
+
 
 function expirationDateValidate(expirationDate: string) {
     if (dayjs().isAfter(dayjs(expirationDate, "MM/YY"))) throw { type: "Unprocessable Entity" }
@@ -21,7 +23,11 @@ function cardIsNotBlock(isBlocked: boolean) {
     if (!isBlocked) throw { type: "Unprocessable Entity" }
 }
 
-async function cardIsActivated(cardPassword: string) {
+function cardIsActivated(cardPassword: string) {
+    if (!cardPassword) throw { type: "Unprocessable Entity" }
+}
+
+function cardIsNotActivated(cardPassword: string) {
     if (cardPassword) throw { type: "Unprocessable Entity" }
 }
 
@@ -35,9 +41,6 @@ async function checkEmployeeCards(cardType: 'groceries' | 'restaurant' | 'transp
     if (employeeCards) throw { type: "Conflict" }
 }
 
-async function cardIsPassword(password: string) {
-    if (password) throw { type: "Conflict" }
-}
 
 
 export default {
@@ -48,5 +51,5 @@ export default {
     cardIsActivated,
     checkEmployeeInCompany,
     checkEmployeeCards,
-    cardIsPassword
+    cardIsNotActivated
 }

@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { activateCard, cardBlock, cardStatements, cardUnblock, createCard } from "../controllers/cardControllers/cardControllers.js";
-import { cardIdValidate } from "../middlewares/cardMiddlewares/activateCardMiddleware.js";
-import { createCardValidate, tokenValidate } from "../middlewares/cardMiddlewares/createCardMiddleware.js";
+import { activateCard, cardBlock, cardStatements, cardUnblock, createCard } from "../controllers/cardControllers.js";
+import { cardIdValidate } from "../middlewares/activateCardMiddleware.js";
+import { createCardValidate, tokenValidate } from "../middlewares/createCardMiddleware.js";
 
 const cardRouter = Router();
 

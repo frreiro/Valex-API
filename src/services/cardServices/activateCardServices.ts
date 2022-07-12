@@ -21,7 +21,7 @@ async function insertPassword(card: any, password: string, cvc: string) {
         { id: number, expirationDate: string, password: string } = card;
 
     cardServices.expirationDateValidate(expirationDate);
-    cardServices.cardIsPassword(cardPassword)
+    cardServices.cardIsNotActivated(cardPassword)
 
     cvcValidate(card, cvc);
     const hashedPassword = encryptPassword(password)

@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import activateCardServices from '../../services/cardServices/activateCardServices.js';
-import blockCardServices from '../../services/cardServices/blockCardServices.js';
-import createCardServices from '../../services/cardServices/createCardServices.js';
-import statementsCardServices from '../../services/cardServices/statementsCardServices.js';
+import activateCardServices from '../services/cardServices/activateCardServices.js';
+import blockCardServices from '../services/cardServices/blockCardServices.js';
+import createCardServices from '../services/cardServices/createCardServices.js';
+import statementsCardServices from '../services/cardServices/statementsCardServices.js';
 
 
 // recebe {employeeId, cardType}

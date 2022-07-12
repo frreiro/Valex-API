@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { findByApiKey } from '../../repositories/companyRepository.js';
-import cardSchemas from '../../schemas/cardSchemas.js';
+import { findByApiKey } from '../repositories/companyRepository.js';
+import cardSchemas from '../schemas/cardSchemas.js';
 
 export async function tokenValidate(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
