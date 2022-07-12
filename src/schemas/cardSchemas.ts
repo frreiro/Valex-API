@@ -11,4 +11,12 @@ const activateCardSchema = joi.object({
     password: joi.string().required()
 })
 
-export default { createCardSchema, activateCardSchema }
+const cardStatementsSchema = joi.object({
+    cardId: joi.number().integer().required()
+})
+
+const cardBlockSchema = joi.object({
+    cardId: joi.number().integer().required(),
+    password: joi.string().required()
+})
+export default { createCardSchema, activateCardSchema, cardStatementsSchema, cardBlockSchema }

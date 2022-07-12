@@ -23,9 +23,10 @@ export async function activateCard(req: Request, res: Response) {
 
 // recebe {cardId}
 export async function cardStatements(req: Request, res: Response) {
-    const { cardId }: { cardId: number } = req.body;
-    statementsCardServices.getCardStatements(cardId)
-    res.sendStatus(200)
+    const { id } = req.params;
+    const cardId = parseInt(id);
+    const statements = await statementsCardServices.getCardStatements(cardId)
+    res.send(statements).status(200)
 }
 
 // recebe {cardId, password}
