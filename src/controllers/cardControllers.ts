@@ -9,8 +9,8 @@ import statementsCardServices from '../services/cardServices/statementsCardServi
 export async function createCard(req: Request, res: Response) {
     const { employeeId, cardType }: { employeeId: number, cardType: 'groceries' | 'restaurant' | 'transport' | 'education' | 'health' } = req.body
     const { companyId } = res.locals;
-    await createCardServices.generateCreditCard({ employeeId, companyId, cardType })
-    res.sendStatus(201);
+    const card = await createCardServices.generateCreditCard({ employeeId, companyId, cardType })
+    res.send(card).status(201);
 }
 
 // receber {cardId,password,cvc}
