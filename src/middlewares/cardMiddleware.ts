@@ -31,6 +31,20 @@ export function blockCardValidate(req: Request, res: Response, next: NextFunctio
     next();
 }
 
+
+export function rechargeCardValidate(req: Request, res: Response, next: NextFunction) {
+    const { error } = cardSchemas.cardRechargeSchema.validate(req.body)
+    if (error) return res.sendStatus(422);
+    next();
+}
+
+export function purchaseCardValidate(req: Request, res: Response, next: NextFunction) {
+    const { error } = cardSchemas.purchaseSchema.validate(req.body)
+    if (error) return res.sendStatus(422);
+    next();
+}
+
+
 export async function cardIdValidate(req: Request, res: Response, next: NextFunction) {
     let cardId: number = req.params.id ? parseInt(req.params.id) : req.body.cardId
 

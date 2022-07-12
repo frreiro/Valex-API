@@ -8,7 +8,7 @@ const createCardSchema = joi.object({
 const activateCardSchema = joi.object({
     cardId: joi.number().integer().required(),
     cvc: joi.number().integer().required(),
-    password: joi.string().required()
+    password: joi.string().length(4).required()
 })
 
 const cardStatementsSchema = joi.object({
@@ -17,6 +17,26 @@ const cardStatementsSchema = joi.object({
 
 const cardBlockSchema = joi.object({
     cardId: joi.number().integer().required(),
-    password: joi.string().required()
+    password: joi.string().length(4).required()
 })
-export default { createCardSchema, activateCardSchema, cardStatementsSchema, cardBlockSchema }
+
+const cardRechargeSchema = joi.object({
+    cardId: joi.number().integer().required(),
+    amount: joi.number().integer().min(1).required()
+})
+
+const purchaseSchema = joi.object({
+    cardId: joi.number().integer().required(),
+    businessId: joi.number().integer().required(),
+    password: joi.string().length(4).required(),
+    amount: joi.number().integer().min(1).required()
+})
+
+export default {
+    createCardSchema,
+    activateCardSchema,
+    cardStatementsSchema,
+    cardBlockSchema,
+    purchaseSchema,
+    cardRechargeSchema
+}

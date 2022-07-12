@@ -36,7 +36,7 @@ API:
     - body: {
     "cardId": 1,
     "password": "1234",
-    "cvc": 123
+    "cvc": "123"
     }
 - GET /card/:id/statements
     - Rota para listar todas as transações e saldo da conta
@@ -61,6 +61,7 @@ API:
     - headers: { "Authorization": "Bearer $token" }
     - body: {
         "cardId": 1,
+        "amount": 1234
     }
 - POST /purchase 
     - Rota para realizar uma compra

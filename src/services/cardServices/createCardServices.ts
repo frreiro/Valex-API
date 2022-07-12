@@ -37,7 +37,7 @@ function generateCreditCardNumber(): string {
 
 async function generateCreditCardHolderName(employeeId: number) {
     const { fullName }: { fullName: string } = await findById(employeeId);
-    return fullName.split(" ")
+    return fullName?.split(" ")
         .filter(name => name.length > 3)
         .map((name, index, filteredNames) =>
             index === 0 || index === filteredNames.length - 1
