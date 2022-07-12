@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { recharge } from "../controllers/rechargesController.js";
-import { cardIdValidate } from "../middlewares/activateCardMiddleware.js";
-import { tokenValidate } from "../middlewares/cardMiddleware.js";
+import { tokenValidate, cardIdValidate } from "../middlewares/cardMiddleware.js";
 import { amountValidate } from "../middlewares/rechargeMiddleware.js";
 
 const rechargesRouter = Router();

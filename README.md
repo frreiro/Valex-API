@@ -27,14 +27,14 @@ API:
     - Rota para criar um novo cartão
     - headers: { "Authorization": "Bearer $token" }
     - body: {
-        "employeeId": "1",
-        "companyId": "1",
+        "employeeId": 1,
+        "companyId": 1,
     }
-- POST /card/activated
+- POST /card/activate
     - Rota para ativar um cartão
     - headers: {}
     - body: {
-    "cardId": "1",
+    "cardId": 1,
     "password": "1234",
     "cvc": 123
     }
@@ -56,4 +56,20 @@ API:
         "cardId": 1,
         "password": "1234"
     }
+- POST /recharge (autenticada)
+    - Rota para recarregar um cartão
+    - headers: { "Authorization": "Bearer $token" }
+    - body: {
+        "cardId": 1,
+    }
+- POST /purchase 
+    - Rota para realizar uma compra
+    - headers: {}
+    - body: {
+        "cardId": 1,
+        "password": "1234",
+        "businessId": 1,
+        "amount": 1234
+    }
+
 ```

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import rechargesServices from '../services/rechargesServices.js';
 
+// recebe 
 export async function recharge(req: Request, res: Response) {
     const { amount } = req.body;
     const { card } = res.locals
