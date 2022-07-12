@@ -28,7 +28,7 @@ API:
     - headers: { "Authorization": "Bearer $token" }
     - body: {
         "employeeId": 1,
-        "cardType": 1,
+        "cardType": 'groceries'|  'restaurant'| 'transport'|'education'| 'health'
     }
 - POST /card/activate
     - Rota para ativar um cartão

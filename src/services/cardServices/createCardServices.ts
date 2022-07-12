@@ -11,7 +11,8 @@ async function generateCreditCard(data: any) {
     const number = generateCreditCardNumber();
     const cardholderName = await generateCreditCardHolderName(employeeId);
     const expirationDate = generateExpirationDate();
-    const securityCode = generateEncryptCVC();
+    const cvv = faker.finance.creditCardCVV();
+    const securityCode = generateEncryptCVC(cvv);
 
     const card = {
         employeeId,
@@ -27,7 +28,7 @@ async function generateCreditCard(data: any) {
     };
 
     await insert(card)
-    return card;
+    return { ...card, securityCode: cvv };
 }
 
 function generateCreditCardNumber(): string {
@@ -49,8 +50,7 @@ function generateExpirationDate(): string {
     return dayjs().add(5, "y").format("MM/YY");
 }
 
-function generateEncryptCVC() {
-    const cvv = faker.finance.creditCardCVV();
+function generateEncryptCVC(cvv: string) {
     const encryptedCVC = cryptr.encrypt(cvv);
     return encryptedCVC;
 }
