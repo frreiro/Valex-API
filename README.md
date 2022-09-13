@@ -2,10 +2,12 @@
   <a href="https://github.com/frreiro/Valex-API">
     <img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f355.svg" alt="readme-logo" width="80" height="80">
   </a>
-
+ 
   <h3 align="center">
     Valex-API
   </h3>
+  
+  <p align="center">Valex é uma API de cartões de benefícios. <br/>A API é responsável pela criação, recarga, ativação, assim como o processamento das compras.</p>
 </p>
 
 ## Usage
